@@ -42,6 +42,9 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /var/www/html/cgp/conf/config.local.php
 
 %changelog
+* Wed Feb 05 2014 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1.ns6
+- First release. Refs #2507
+
 * Mon Dec 23 2013 Filippo Carletti <filippo.carletti@gmail.com> 1.0.0-1
 - First release
 
