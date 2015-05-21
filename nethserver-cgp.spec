@@ -1,18 +1,17 @@
 Summary: NethServer web interface to collectd
 Name: nethserver-cgp
-Version: @@VERSION@@
-Release: @@RELEASE@@
+Version: 1.0.0
+Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
-URL: https://dev.nethesis.it/projects/%{name}
+URL: %{url_prefix}/%{name}
 
 BuildRequires: nethserver-devtools
 
-AutoReq: no
 Requires: nethserver-collectd, nethserver-httpd
 Requires: perl-CGI, perl-RRD-Simple
-Requires: nethserver-lib >= 1.0.3
+Requires: nethserver-lib
 
 %description
 NethServer web interface to collectd
@@ -21,25 +20,18 @@ See: http://pommi.nethuis.nl/category/cgp/
 %prep
 %setup
 
-%post
-
-%preun
-
 %build
 perl createlinks
 
 %install
-rm -rf $RPM_BUILD_ROOT
-(cd root   ; find . -depth -print | cpio -dump $RPM_BUILD_ROOT)
+rm -rf %{buildroot}
+(cd root   ; find . -depth -print | cpio -dump %{buildroot})
+%{genfilelist} %{buildroot} > %{version}-%{release}-filelist
 
-%{genfilelist} $RPM_BUILD_ROOT > e-smith-%{version}-filelist
-
-%clean 
-rm -rf $RPM_BUILD_ROOT
-
-%files -f e-smith-%{version}-filelist
+%files -f %{version}-%{release}-filelist
 %defattr(-,root,root)
 %config(noreplace) /var/www/html/cgp/conf/config.local.php
+%doc COPYING
 
 %changelog
 * Wed Feb 05 2014 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1.ns6
