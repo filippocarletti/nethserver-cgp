@@ -32,6 +32,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %config(noreplace) /var/www/html/cgp/conf/config.local.php
 %doc COPYING
+%dir %{_nseventsdir}/%{name}-update
 
 %changelog
 * Wed Feb 05 2014 Davide Principi <davide.principi@nethesis.it> - 1.0.0-1.ns6
