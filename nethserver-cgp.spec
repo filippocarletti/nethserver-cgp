@@ -32,6 +32,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %config(noreplace) /var/www/html/cgp/conf/config.local.php
 %doc COPYING
+%dir %{_nseventsdir}/%{name}-update
 
 %changelog
 * Tue Dec 29 2015 Filippo Carletti <filippo.carletti@gmail.com> - 1.2.0-1
